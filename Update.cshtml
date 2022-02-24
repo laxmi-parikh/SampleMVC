@@ -1,0 +1,34 @@
+﻿@model ASP.NET_MVC_Application.Models.Client
+
+@{
+    ViewBag.Title = "Update the Client";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h3>Update the following form</h3>
+</div>
+<form method="post" style="margin: 5% 0 0">
+    <div class="float-left">
+        <p>Name</p>
+        <p>Address</p>
+        <p>Trusted</p>
+    </div>
+    <div class="float-right">
+        <input type="text" style="margin: 1px 0 2px" name="name" value="@Model.Name" /><br />
+        <input type="text" style="margin: 1px 0 2px" name="address" value="@Model.Address" /><br />
+        <input type="checkbox" style="margin: 1px 0 2px" name="trusted" 
+               @if (Model.Trusted) { <text>checked="checked"</text> } />
+        <br />
+        <input type="submit" value="Save" />
+    </div>
+</form>
+
+<p>
+    @if (ViewBag.Submitted != null && ViewBag.Submitted)
+    {
+        // If the form was submitted
+        @ViewBag.Message
+    }
+</p>

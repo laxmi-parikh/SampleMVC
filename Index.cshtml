@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ASP.NET_MVC_Application.Models.Client>
+
+@{
+    ViewBag.Title = "All Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Following table shows the Clients detail</h3>
+<p>You will find their details, as well as other links to other actions that can be performed and operated over the client  objects. </p>
+
+<p>You can also create a new client <a href="~/Client/Create">here</a>. </p>
+
+<table class="clients-table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Trusted</th>
+        <th>Actions</th>
+    </tr>
+
+    @if(Model != null && Model.Count() > 0)
+    {
+        foreach (var client in Model)
+        {
+           // Create the list of these clients
+            <tr>
+                <td>@client.ID</td>
+                <td>@client.Name</td>
+                <td>@client.Address</td>
+                <td>@client.Trusted</td>
+                <td>
+                    <a href="~/Client/Update/@client.ID">Update</a>
+                    <a href="~/Client/Delete/@client.ID">Delete</a>
+                </td>
+            </tr> 
+        }
+    }
+</table>
